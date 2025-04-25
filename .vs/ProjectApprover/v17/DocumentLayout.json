@@ -1,0 +1,547 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\approvalruleservice\\approvalrulehandlers\\compareapprovalrulehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\approvalruleservice\\approvalrulehandlers\\compareapprovalrulehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\approvalruleservice\\approvalruledto\\responseapprovalruledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\approvalruleservice\\approvalruledto\\responseapprovalruledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\userservice\\userdtos\\responseuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\userservice\\userdtos\\responseuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\projectapprovalstepservice\\projectapprovalstepservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\projectapprovalstepservice\\projectapprovalstepservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\proposalservice\\proposalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\proposalservice\\proposalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A2173D5-8948-4332-9E50-6318826C0C64}|ProjectApprover\\MyApp.Console.csproj|c:\\users\\ivo\\documents\\projectapprover\\projectapprover\\menuactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A2173D5-8948-4332-9E50-6318826C0C64}|ProjectApprover\\MyApp.Console.csproj|solutionrelative:projectapprover\\menuactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\approvalruleservice\\approvalruleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\approvalruleservice\\approvalruleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BAFACEA-8B09-4C3F-B1EA-20E54BB2C72C}|Infrastructure\\Infrastructure.csproj|c:\\users\\ivo\\documents\\projectapprover\\infrastructure\\persistence\\repositories\\approvalrulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BAFACEA-8B09-4C3F-B1EA-20E54BB2C72C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\repositories\\approvalrulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A2173D5-8948-4332-9E50-6318826C0C64}|ProjectApprover\\MyApp.Console.csproj|c:\\users\\ivo\\documents\\projectapprover\\projectapprover\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A2173D5-8948-4332-9E50-6318826C0C64}|ProjectApprover\\MyApp.Console.csproj|solutionrelative:projectapprover\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\interfaces\\repository\\iapprovalrulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\interfaces\\repository\\iapprovalrulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\interfaces\\repository\\iprojectapprovalsteprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\interfaces\\repository\\iprojectapprovalsteprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BAFACEA-8B09-4C3F-B1EA-20E54BB2C72C}|Infrastructure\\Infrastructure.csproj|c:\\users\\ivo\\documents\\projectapprover\\infrastructure\\persistence\\repositories\\projectapprovalsteprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BAFACEA-8B09-4C3F-B1EA-20E54BB2C72C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\repositories\\projectapprovalsteprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BAFACEA-8B09-4C3F-B1EA-20E54BB2C72C}|Infrastructure\\Infrastructure.csproj|c:\\users\\ivo\\documents\\projectapprover\\infrastructure\\persistence\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BAFACEA-8B09-4C3F-B1EA-20E54BB2C72C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BAFACEA-8B09-4C3F-B1EA-20E54BB2C72C}|Infrastructure\\Infrastructure.csproj|c:\\users\\ivo\\documents\\projectapprover\\infrastructure\\persistence\\repositories\\projectproposalrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BAFACEA-8B09-4C3F-B1EA-20E54BB2C72C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\repositories\\projectproposalrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\projectapprovalstepservice\\projectapprovalstephandlers\\verifystepshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\projectapprovalstepservice\\projectapprovalstephandlers\\verifystepshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\projectapprovalstepservice\\projectapprovalstephandlers\\updateprojecthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\projectapprovalstepservice\\projectapprovalstephandlers\\updateprojecthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\interfaces\\projectproposal\\iprojectproposalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\interfaces\\projectproposal\\iprojectproposalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\projectapprovalstepservice\\projectapprovalstephandlers\\getlistprojectsbyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\projectapprovalstepservice\\projectapprovalstephandlers\\getlistprojectsbyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\projectapprovalstepservice\\projectapprovalstephandlers\\createprojecthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\projectapprovalstepservice\\projectapprovalstephandlers\\createprojecthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\projectapprovalstepservice\\projectapprovalstepquerys\\verifystepsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\projectapprovalstepservice\\projectapprovalstepquerys\\verifystepsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\interfaces\\projectapprovalstep\\iprojectapprovalstepservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\interfaces\\projectapprovalstep\\iprojectapprovalstepservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\projectapprovalstepservice\\projectapprovalstepcommands\\updateprojectapprovalstep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\projectapprovalstepservice\\projectapprovalstepcommands\\updateprojectapprovalstep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\proposalservice\\proposalhandlers\\updateprojectproposalhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\proposalservice\\proposalhandlers\\updateprojectproposalhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\projecttypeservice\\projecttypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\projecttypeservice\\projecttypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\interfaces\\repository\\iprojectproposalrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\interfaces\\repository\\iprojectproposalrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BAFACEA-8B09-4C3F-B1EA-20E54BB2C72C}|Infrastructure\\Infrastructure.csproj|c:\\users\\ivo\\documents\\projectapprover\\infrastructure\\persistence\\dbcontextapprover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BAFACEA-8B09-4C3F-B1EA-20E54BB2C72C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\dbcontextapprover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BAFACEA-8B09-4C3F-B1EA-20E54BB2C72C}|Infrastructure\\Infrastructure.csproj|c:\\users\\ivo\\documents\\projectapprover\\infrastructure\\migrations\\dbcontextapprovermodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BAFACEA-8B09-4C3F-B1EA-20E54BB2C72C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\migrations\\dbcontextapprovermodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\proposalservice\\proposalhandlers\\getallproposalbyuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\proposalservice\\proposalhandlers\\getallproposalbyuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\proposalservice\\proposalcommands\\updateprojectproposalcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\proposalservice\\proposalcommands\\updateprojectproposalcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\proposalservice\\proposalhandlers\\createprojectproposalhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\proposalservice\\proposalhandlers\\createprojectproposalhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|c:\\users\\ivo\\documents\\projectapprover\\application\\services\\proposalservice\\proposalcommands\\createprojectproposalcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C35A91C-DBC1-4CAD-9FEC-11C509C87346}|Application\\Application.csproj|solutionrelative:application\\services\\proposalservice\\proposalcommands\\createprojectproposalcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ResponseApprovalRuleDto.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ApprovalRuleService\\ApprovalRuleDto\\ResponseApprovalRuleDto.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ApprovalRuleService\\ApprovalRuleDto\\ResponseApprovalRuleDto.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ApprovalRuleService\\ApprovalRuleDto\\ResponseApprovalRuleDto.cs",
+              "RelativeToolTip": "Application\\Services\\ApprovalRuleService\\ApprovalRuleDto\\ResponseApprovalRuleDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T02:07:00.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ResponseUserDto.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\UserService\\UserDtos\\ResponseUserDto.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\UserService\\UserDtos\\ResponseUserDto.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\UserService\\UserDtos\\ResponseUserDto.cs",
+              "RelativeToolTip": "Application\\Services\\UserService\\UserDtos\\ResponseUserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T02:05:23.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CreateProjectHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\CreateProjectHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\CreateProjectHandler.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\CreateProjectHandler.cs",
+              "RelativeToolTip": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\CreateProjectHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T22:19:34.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IProjectProposalService.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Interfaces\\ProjectProposal\\IProjectProposalService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\ProjectProposal\\IProjectProposalService.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Interfaces\\ProjectProposal\\IProjectProposalService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\ProjectProposal\\IProjectProposalService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T22:32:32.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MenuActions.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\ProjectApprover\\MenuActions.cs",
+              "RelativeDocumentMoniker": "ProjectApprover\\MenuActions.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\ProjectApprover\\MenuActions.cs",
+              "RelativeToolTip": "ProjectApprover\\MenuActions.cs",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAAAJoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T23:56:12.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProposalService.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProposalService\\ProposalService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProposalService\\ProposalService.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProposalService\\ProposalService.cs",
+              "RelativeToolTip": "Application\\Services\\ProposalService\\ProposalService.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAQwE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T22:24:56.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CompareApprovalRuleHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ApprovalRuleService\\ApprovalRuleHandlers\\CompareApprovalRuleHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ApprovalRuleService\\ApprovalRuleHandlers\\CompareApprovalRuleHandler.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ApprovalRuleService\\ApprovalRuleHandlers\\CompareApprovalRuleHandler.cs",
+              "RelativeToolTip": "Application\\Services\\ApprovalRuleService\\ApprovalRuleHandlers\\CompareApprovalRuleHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T01:01:02.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApprovalRuleService.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ApprovalRuleService\\ApprovalRuleService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ApprovalRuleService\\ApprovalRuleService.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ApprovalRuleService\\ApprovalRuleService.cs",
+              "RelativeToolTip": "Application\\Services\\ApprovalRuleService\\ApprovalRuleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T01:00:54.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\ProjectApprover\\Program.cs",
+              "RelativeDocumentMoniker": "ProjectApprover\\Program.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\ProjectApprover\\Program.cs",
+              "RelativeToolTip": "ProjectApprover\\Program.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAADkAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:44:33.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProjectApprovalStepService.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepService.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepService.cs",
+              "RelativeToolTip": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepService.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAAADsAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:38:22.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IProjectApprovalStepRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Interfaces\\Repository\\IProjectApprovalStepRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\Repository\\IProjectApprovalStepRepository.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Interfaces\\Repository\\IProjectApprovalStepRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\Repository\\IProjectApprovalStepRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:36:38.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProjectApprovalStepRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Infrastructure\\Persistence\\Repositories\\ProjectApprovalStepRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Repositories\\ProjectApprovalStepRepository.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Infrastructure\\Persistence\\Repositories\\ProjectApprovalStepRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Repositories\\ProjectApprovalStepRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:36:56.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "VerifyStepsQuery.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepQuerys\\VerifyStepsQuery.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepQuerys\\VerifyStepsQuery.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepQuerys\\VerifyStepsQuery.cs",
+              "RelativeToolTip": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepQuerys\\VerifyStepsQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T23:22:41.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ApprovalRuleRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Infrastructure\\Persistence\\Repositories\\ApprovalRuleRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Repositories\\ApprovalRuleRepository.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Infrastructure\\Persistence\\Repositories\\ApprovalRuleRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Repositories\\ApprovalRuleRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T01:23:07.227Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IApprovalRuleRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Interfaces\\Repository\\IApprovalRuleRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\Repository\\IApprovalRuleRepository.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Interfaces\\Repository\\IApprovalRuleRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\Repository\\IApprovalRuleRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T01:23:26.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ProjectProposalRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Infrastructure\\Persistence\\Repositories\\ProjectProposalRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Repositories\\ProjectProposalRepository.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Infrastructure\\Persistence\\Repositories\\ProjectProposalRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Repositories\\ProjectProposalRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:36:57.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Infrastructure\\Persistence\\Repositories\\Repository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Repositories\\Repository.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Infrastructure\\Persistence\\Repositories\\Repository.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Repositories\\Repository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T22:29:07.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "GetListProjectsByIdHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\GetListProjectsByIdHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\GetListProjectsByIdHandler.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\GetListProjectsByIdHandler.cs",
+              "RelativeToolTip": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\GetListProjectsByIdHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:51:48.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UpdateProjectHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\UpdateProjectHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\UpdateProjectHandler.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\UpdateProjectHandler.cs",
+              "RelativeToolTip": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\UpdateProjectHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:31:59.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "VerifyStepsHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\VerifyStepsHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\VerifyStepsHandler.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\VerifyStepsHandler.cs",
+              "RelativeToolTip": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepHandlers\\VerifyStepsHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T23:23:33.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IProjectApprovalStepService.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Interfaces\\ProjectApprovalStep\\IProjectApprovalStepService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\ProjectApprovalStep\\IProjectApprovalStepService.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Interfaces\\ProjectApprovalStep\\IProjectApprovalStepService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\ProjectApprovalStep\\IProjectApprovalStepService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:45:00.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UpdateProjectApprovalStep.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepCommands\\UpdateProjectApprovalStep.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepCommands\\UpdateProjectApprovalStep.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepCommands\\UpdateProjectApprovalStep.cs",
+              "RelativeToolTip": "Application\\Services\\ProjectApprovalStepService\\ProjectApprovalStepCommands\\UpdateProjectApprovalStep.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:50:51.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "UpdateProjectProposalHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProposalService\\ProposalHandlers\\UpdateProjectProposalHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProposalService\\ProposalHandlers\\UpdateProjectProposalHandler.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProposalService\\ProposalHandlers\\UpdateProjectProposalHandler.cs",
+              "RelativeToolTip": "Application\\Services\\ProposalService\\ProposalHandlers\\UpdateProjectProposalHandler.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAIAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T22:27:06.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ProjectTypeService.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectTypeService\\ProjectTypeService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProjectTypeService\\ProjectTypeService.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProjectTypeService\\ProjectTypeService.cs",
+              "RelativeToolTip": "Application\\Services\\ProjectTypeService\\ProjectTypeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T23:02:18.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IProjectProposalRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Interfaces\\Repository\\IProjectProposalRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\Repository\\IProjectProposalRepository.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Interfaces\\Repository\\IProjectProposalRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\Repository\\IProjectProposalRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T22:29:34.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "DbContextApprover.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Infrastructure\\Persistence\\DbContextApprover.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\DbContextApprover.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Infrastructure\\Persistence\\DbContextApprover.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\DbContextApprover.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:36:54.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "DbContextApproverModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Infrastructure\\Migrations\\DbContextApproverModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\DbContextApproverModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Infrastructure\\Migrations\\DbContextApproverModelSnapshot.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\DbContextApproverModelSnapshot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T22:59:43.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "GetAllProposalByUserHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProposalService\\ProposalHandlers\\GetAllProposalByUserHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProposalService\\ProposalHandlers\\GetAllProposalByUserHandler.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProposalService\\ProposalHandlers\\GetAllProposalByUserHandler.cs",
+              "RelativeToolTip": "Application\\Services\\ProposalService\\ProposalHandlers\\GetAllProposalByUserHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:38:13.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UpdateProjectProposalCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProposalService\\ProposalCommands\\UpdateProjectProposalCommand.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProposalService\\ProposalCommands\\UpdateProjectProposalCommand.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProposalService\\ProposalCommands\\UpdateProjectProposalCommand.cs",
+              "RelativeToolTip": "Application\\Services\\ProposalService\\ProposalCommands\\UpdateProjectProposalCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T22:25:19.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "CreateProjectProposalHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProposalService\\ProposalHandlers\\CreateProjectProposalHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProposalService\\ProposalHandlers\\CreateProjectProposalHandler.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProposalService\\ProposalHandlers\\CreateProjectProposalHandler.cs",
+              "RelativeToolTip": "Application\\Services\\ProposalService\\ProposalHandlers\\CreateProjectProposalHandler.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBsAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:38:15.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "CreateProjectProposalCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProposalService\\ProposalCommands\\CreateProjectProposalCommand.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ProposalService\\ProposalCommands\\CreateProjectProposalCommand.cs",
+              "ToolTip": "C:\\Users\\Ivo\\Documents\\ProjectApprover\\Application\\Services\\ProposalService\\ProposalCommands\\CreateProjectProposalCommand.cs",
+              "RelativeToolTip": "Application\\Services\\ProposalService\\ProposalCommands\\CreateProjectProposalCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T22:25:22.457Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

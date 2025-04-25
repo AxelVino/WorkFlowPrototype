@@ -1,0 +1,22 @@
+﻿using Application.Interfaces.Repository;
+using Application.Services.AreaService.AreaQuerys;
+using MediatR;
+
+namespace Application.Services.AreaService.AreaHandlers
+{
+    public class GetAreaByIdHandler: IRequestHandler<GetAreaByIdQuery, Domain.Entities.Area>
+    {
+        private readonly IRepository<Domain.Entities.Area> _userRepository;
+
+        public GetAreaByIdHandler(IRepository<Domain.Entities.Area> userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
+        public async Task<Domain.Entities.Area> Handle(GetAreaByIdQuery request, CancellationToken cancellationToken)
+        {
+            var area = await _userRepository.GetByIdAsync(request.Id);
+            return area is null ? throw new Exception($"The area with ID({request.Id}) was not found.") : area;
+        }
+    }
+}
