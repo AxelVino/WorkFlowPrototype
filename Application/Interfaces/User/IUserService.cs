@@ -7,7 +7,7 @@ namespace Application.Interfaces.User
     {
         Task<int> CreateUserAsync(CreateUserCommand command);
         Task<Domain.Entities.User?> GetUserByIdAsync(int id);
-        Task<List<Domain.Entities.User>> GetAllUsersAsync();
+        Task<List<UserResponse>> GetAllUsersAsync();
         Task<bool> UpdateUserAsync(UpdateUserCommand command);
         Task<bool> DeleteUserAsync(int id);
     }

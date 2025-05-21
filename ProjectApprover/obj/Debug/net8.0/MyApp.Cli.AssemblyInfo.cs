@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyApp.Cli")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea71bb1b2b9fb8800022a26b87a8419c39e1c699")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyApp.Cli")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyApp.Cli")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

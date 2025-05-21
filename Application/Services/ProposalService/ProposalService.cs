@@ -10,6 +10,8 @@ using Application.Interfaces.ApprovalRule;
 using Application.Services.ApprovalRuleService.ApprovalRuleDto;
 using Application.Services.ProjectApprovalStepService.ProjectApproalStepDtos;
 using Application.Services.ProposalService.ProposalQuerys;
+using Application.Services.ProposalService.ProposalDtos;
+using Application.Interfaces.User;
 
 namespace Application.Services.ProposalService
 {
@@ -21,10 +23,12 @@ namespace Application.Services.ProposalService
         private readonly IApprovalStatusService _approvalStatusService;
         private readonly IProjectApprovalStepService _projectApprovalStepService;
         private readonly IApprovalRuleService _approvalRuleService;
+        private readonly IUserService _userService;
 
         public ProposalService(IMediator mediator, IAreaService areaService,
             IProjectTypeService projectTypeService, IApprovalStatusService approvalStatusService,
-            IProjectApprovalStepService projectApprovalStepService, IApprovalRuleService approvalRuleService)
+            IProjectApprovalStepService projectApprovalStepService, IApprovalRuleService approvalRuleService,
+            IUserService userService)
         {
             _mediator = mediator;
             _areaService = areaService;
@@ -32,16 +36,28 @@ namespace Application.Services.ProposalService
             _approvalStatusService = approvalStatusService;
             _projectApprovalStepService = projectApprovalStepService;
             _approvalRuleService = approvalRuleService;
+            _userService = userService;
         }
 
-        public async Task<Guid> CreateProjectProposalAsync(CreateProjectProposalCommand command)
+        public async Task<Guid> CreateProjectProposalAsync(ProposalRequest proposal)
         {
-            //Search the missing objects to finish the project proposal entity
-            command.AreaObject = await _areaService.GetAreaByIdAsync(command.Area);
-            command.ProjectTypeObject = await _projectTypeService.GetTypeByIdAsync(command.Type);
-            command.ApprovalStatusObject = await _approvalStatusService.GetStatusByIdAsync(command.Status);
+            CreateProjectProposalCommand command = new()
+            {
+                Title = proposal.Title,
+                Description = proposal.Description,
+                Area = proposal.Area,
+                AreaObject = await _areaService.GetAreaByIdAsync(proposal.Area),
+                Type = proposal.Type,
+                ProjectTypeObject = await _projectTypeService.GetTypeByIdAsync(proposal.Type),
+                EstimatedAmount = proposal.Amount,
+                EstimatedDuration = proposal.Duration,
+                Status = proposal.Status,
+                ApprovalStatusObject = await _approvalStatusService.GetStatusByIdAsync(proposal.Status),
+                CreateAt = DateTime.Now,
+                CreateBy = proposal.User,
+                UserObject = await _userService.GetUserByIdAsync(proposal.User),
+            };
 
-            //Save the new project proposal
             ProjectProposal proposalProject = await _mediator.Send(command);
 
             //Call _approvalRuleService to obtain StepOrder and ApproverRoleId

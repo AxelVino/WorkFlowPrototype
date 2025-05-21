@@ -37,9 +37,6 @@ namespace Infrastructure.Persistence.Repositories
                 .ThenByDescending(x => x.Rule.MaxAmount != 0)
                 .FirstOrDefault();
 
-            if (bestMatch == null)
-                throw new Exception("No approval rule matches the provided data.");
-
             return new ResponseApprovalRuleDto
             {
                 ApproverRoleId = bestMatch.Rule.ApproverRoleId,

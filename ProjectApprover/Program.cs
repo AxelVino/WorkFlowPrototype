@@ -10,7 +10,6 @@ using Application.Services.UserService.UserHandlers;
 using Application.Services.ProposalService;
 using Application.Interfaces.User;
 using Application.Services.UserService;
-using Application.Services.ProposalService.ProposalCommands;
 using Application.Interfaces.Area;
 using Application.Services.AreaService;
 using Application.Interfaces.ApprovalStatus;
@@ -24,7 +23,6 @@ using Application.Services.ApprovalRuleService;
 using Application.Interfaces.ProjectApprovalStep;
 using Application.Services.ProjectApprovalStepService;
 using Infrastructure.Persistence.Repositories;
-using Domain.Entities;
 using MyApp.Cli;
 
 var host = Host.CreateDefaultBuilder(args)

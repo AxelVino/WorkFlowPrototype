@@ -1,7 +1,6 @@
 ﻿using Application.Interfaces.ApprovalStatus;
 using Application.Interfaces.ApproverRole;
 using Application.Interfaces.ProjectApprovalStep;
-using Application.Interfaces.ProjectProposal;
 using Application.Services.ProjectApprovalStepService.ProjectApproalStepDtos;
 using Application.Services.ProjectApprovalStepService.ProjectApprovalStepCommands;
 using Application.Services.ProjectApprovalStepService.ProjectApprovalStepQuerys;
