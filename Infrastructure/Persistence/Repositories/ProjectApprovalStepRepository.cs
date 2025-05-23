@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces.Repository;
+using Application.Services.ProposalService.ProposalDtos;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,42 +22,37 @@ namespace Infrastructure.Persistence.Repositories
             return true;
         }
 
-        public async Task<List<ProjectApprovalStep>> GetAllFiltredAsync(int approverRoleId)
+        public async Task<List<ProjectApprovalStep>> GetAllFiltredAsync(ProposalFilterRequest request)
         {
-            var allSteps = await _dbContext.ProjectApprovalStep
-                .Include(p => p.ProjectProposalObject)
-                .ThenInclude(p => p.ProjectTypeObject)
-                .Include(p => p.ProjectProposalObject)
-                .ThenInclude(p => p.UserObject)
-                .Include(p => p.ProjectProposalObject)
-                .ThenInclude(p => p.AreaObject)
-                .Include(p => p.ApprovalStatusObject)
-                .ToListAsync();
 
-            var stepsByProposal = allSteps
-                 .GroupBy(s => s.ProjectProposalId)
-                 .ToDictionary(
-                 g => g.Key,
-                 g => g.OrderBy(s => s.StepOrder).ToList()
-                 );
+            var query = _dbContext.ProjectApprovalStep
+                .Include(a => a.ProjectProposalObject)
+                    .ThenInclude(p => p.ApprovalStatusObject)
+                .Include(a => a.ProjectProposalObject)
+                    .ThenInclude(p => p.UserObject)
+                .Include(a => a.ProjectProposalObject)
+                    .ThenInclude(p => p.AreaObject)
+                .Include(a => a.ProjectProposalObject)
+                    .ThenInclude(p => p.ProjectTypeObject)
+                .AsQueryable();
 
-            var filteredSteps = allSteps
-                .Where(p =>
-                    p.ApproverRoleId == approverRoleId &&
-                    (p.Status == 1 || p.Status == 4) &&
-                    (
-                        p.StepOrder == 1 || (
-                            stepsByProposal.TryGetValue(p.ProjectProposalId, out var stepsOfProject) &&
-                            stepsOfProject.Any(prev =>
-                                prev.StepOrder == p.StepOrder - 1 &&
-                                prev.Status == 2
-                            )
-                        )
-                    )
-                )
-                .ToList();
-
-            return filteredSteps;
+            if (!string.IsNullOrWhiteSpace(request.Title))
+            {
+                query = query.Where(a => a.ProjectProposalObject.Title.ToLower().Contains(request.Title.ToLower()));
+            }
+            if (request.Status.HasValue)
+            {
+                query = query.Where(a => a.ProjectProposalObject.ApprovalStatusObject.Id == request.Status);
+            }
+            if (request.Applicant.HasValue)
+            {
+                query = query.Where(a => a.ProjectProposalObject.UserObject.Id == request.Applicant);
+            }
+            if (request.ApprovalUser.HasValue)
+            {
+                query = query.Where(a => a.ApproverUserId == request.ApprovalUser);
+            }
+            return await query.ToListAsync();
         }
 
         public async Task<bool> UpdateProject(ProjectApprovalStep project)

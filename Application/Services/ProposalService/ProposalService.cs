@@ -39,7 +39,7 @@ namespace Application.Services.ProposalService
             _userService = userService;
         }
 
-        public async Task<Guid> CreateProjectProposalAsync(ProposalRequest proposal)
+        public async Task<ProposalResponse> CreateProjectProposalAsync(ProposalRequest proposal)
         {
             CreateProjectProposalCommand command = new()
             {
@@ -60,6 +60,7 @@ namespace Application.Services.ProposalService
 
             ProjectProposal proposalProject = await _mediator.Send(command);
 
+ 
             //Call _approvalRuleService to obtain StepOrder and ApproverRoleId
             ResponseApprovalRuleDto response = await _approvalRuleService.MatchProposalWithRuleAsync(proposalProject.EstimatedAmount
                 , proposalProject.Area, proposalProject.Type);

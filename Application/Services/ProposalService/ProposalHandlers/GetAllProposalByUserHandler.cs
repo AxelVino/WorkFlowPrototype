@@ -1,13 +1,7 @@
 ﻿using Application.Interfaces.Repository;
-using Application.Services.ProposalService.ProposalCommands;
 using Application.Services.ProposalService.ProposalQuerys;
 using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Services.ProposalService.ProposalHandlers
 {

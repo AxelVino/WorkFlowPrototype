@@ -1,15 +1,21 @@
+using Application.Interfaces.ApprovalRule;
 using Application.Interfaces.ApprovalStatus;
 using Application.Interfaces.ApproverRole;
 using Application.Interfaces.Area;
+using Application.Interfaces.ProjectApprovalStep;
+using Application.Interfaces.ProjectProposal;
 using Application.Interfaces.ProjectType;
 using Application.Interfaces.Repository;
 using Application.Interfaces.User;
+using Application.Services.ApprovalRuleService;
 using Application.Services.ApprovalStatusService;
 using Application.Services.ApproverRoleService;
 using Application.Services.AreaService;
+using Application.Services.ProjectApprovalStepService;
 using Application.Services.ProjectTypeService;
+using Application.Services.ProposalService;
 using Application.Services.UserService;
-using Application.Services.UserService.UserHandlers;
+using Domain.Entities;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
 using MediatR;
@@ -53,6 +59,9 @@ builder.Services.AddScoped<IApproverRoleService, ApproverRoleService>();
 builder.Services.AddScoped<IApprovalStatusService, ApprovalStatusService>();
 builder.Services.AddScoped<IAreaService, AreaService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IProjectProposalService, ProposalService>();
+builder.Services.AddScoped<IProjectApprovalStepService, ProjectApprovalStepService>();
+builder.Services.AddScoped<IApprovalRuleService, ApprovalRuleService>();
 
 builder.Services.AddMediatR(typeof(ApproverRoleService).Assembly);
 

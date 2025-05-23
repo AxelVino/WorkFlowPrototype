@@ -5,6 +5,7 @@ using Application.Services.ProjectApprovalStepService.ProjectApproalStepDtos;
 using Application.Services.ProjectApprovalStepService.ProjectApprovalStepCommands;
 using Application.Services.ProjectApprovalStepService.ProjectApprovalStepQuerys;
 using Application.Services.ProposalService.ProposalCommands;
+using Application.Services.ProposalService.ProposalDtos;
 using Domain.Entities;
 using MediatR;
 
@@ -54,11 +55,6 @@ namespace Application.Services.ProjectApprovalStepService
 
         }
 
-        public async Task<List<ProjectApprovalStep>> GetListProjectsById(int approverRoleId)
-        {
-            return await _mediator.Send(new GetListProjectsByIdQuery(approverRoleId));
-        }
-
         public async Task<bool> ApproveProjectStepAsync(ProjectApprovalStep project)
         {
             bool result = false;
@@ -101,6 +97,32 @@ namespace Application.Services.ProjectApprovalStepService
             }
 
             return result;
+        }
+
+        public async Task<List<ProjectProposalResponse>> GetAllProjectsFiltred(ProposalFilterRequest request)
+        {
+            List<ProjectApprovalStep> list = await _mediator.Send(new GetListApprovalStepsQuery(request));
+            List<ProjectProposalResponse> listResponse = [];
+            if (list == null)
+            {
+                return listResponse;
+            }
+            foreach (ProjectApprovalStep project in list)
+            {
+                ProjectProposalResponse response = new()
+                {
+                    Id = project.ProjectProposalId,
+                    Title = project.ProjectProposalObject.Title,
+                    Description = project.ProjectProposalObject.Description,
+                    Amount = project.ProjectProposalObject.EstimatedAmount,
+                    Duration = project.ProjectProposalObject.EstimatedDuration,
+                    Area = project.ProjectProposalObject.AreaObject.Name,
+                    Type = project.ProjectProposalObject.ProjectTypeObject.Name,
+                    Status = project.ProjectProposalObject.ApprovalStatusObject.Name,
+                };
+                listResponse.Add(response);
+            }
+            return listResponse;
         }
     }
 }

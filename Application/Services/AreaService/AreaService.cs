@@ -30,7 +30,7 @@ namespace Application.Services.AreaService
             }
             return listResponse;
         }
-        public async Task<Area?> GetAreaByIdAsync(int id)
+        public async Task<Area> GetAreaByIdAsync(int id)
         {
             return await _mediator.Send(new GetAreaByIdQuery(id));
         }
