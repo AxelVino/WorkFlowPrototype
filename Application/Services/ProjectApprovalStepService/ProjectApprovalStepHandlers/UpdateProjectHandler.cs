@@ -1,10 +1,11 @@
 ﻿using Application.Interfaces.Repository;
 using Application.Services.ProjectApprovalStepService.ProjectApprovalStepCommands;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Services.ProjectApprovalStepService.ProjectApprovalStepHandlers
 {
-    public class UpdateProjectHandler : IRequestHandler<UpdateProjectApprovalStep, bool>
+    public class UpdateProjectHandler : IRequestHandler<UpdateProjectApprovalStep, List<ProjectApprovalStep>>
     {
         private readonly IProjectApprovalStepRepository _repository;
 
@@ -13,7 +14,7 @@ namespace Application.Services.ProjectApprovalStepService.ProjectApprovalStepHan
             _repository = userRepository;
         }
 
-        public async Task<bool> Handle(UpdateProjectApprovalStep request, CancellationToken cancellationToken)
+        public async Task<List<ProjectApprovalStep>> Handle(UpdateProjectApprovalStep request, CancellationToken cancellationToken)
         {
             return await _repository.UpdateProject(request.Project);
         }

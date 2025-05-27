@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.ApprovalStatus;
+﻿using Application.Exceptions;
+using Application.Interfaces.ApprovalStatus;
 using Application.Services.ApprovalStatusService.StatusDtos;
 using Application.Services.ApprovalStatusService.StatusQuerys;
 using Domain.Entities;
@@ -35,7 +36,11 @@ namespace Application.Services.ApprovalStatusService
 
         public async Task<ApprovalStatus> GetStatusByIdAsync(int id)
         {
-            return await _mediator.Send(new GetStatusByIdQuery(id));
+            ApprovalStatus status = await _mediator.Send(new GetStatusByIdQuery(id));
+            if (status == null)
+                throw new ExceptionNotFound("Status not found, please enter a valid status.");
+
+            return status;
         }
     }
 }

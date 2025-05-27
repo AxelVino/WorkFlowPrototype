@@ -1,11 +1,14 @@
-﻿using Application.Interfaces.ApprovalStatus;
+﻿using Application.Exceptions;
+using Application.Interfaces.ApprovalStatus;
 using Application.Interfaces.ApproverRole;
 using Application.Interfaces.ProjectApprovalStep;
+using Application.Interfaces.User;
+using Application.Services.ApprovalRuleService.ApprovalRuleDto;
 using Application.Services.ProjectApprovalStepService.ProjectApproalStepDtos;
 using Application.Services.ProjectApprovalStepService.ProjectApprovalStepCommands;
 using Application.Services.ProjectApprovalStepService.ProjectApprovalStepQuerys;
-using Application.Services.ProposalService.ProposalCommands;
 using Application.Services.ProposalService.ProposalDtos;
+using Application.Services.UserService.UserDtos;
 using Domain.Entities;
 using MediatR;
 
@@ -16,93 +19,168 @@ namespace Application.Services.ProjectApprovalStepService
         private readonly IMediator _mediator;
         private readonly IApproverRoleService _approverRoleService;
         private readonly IApprovalStatusService _approverStatusService;
+        private readonly IUserService _userService;
 
-        public ProjectApprovalStepService(IMediator mediator, IApproverRoleService approverRoleService, IApprovalStatusService approvalStatusService)
+        public ProjectApprovalStepService(IMediator mediator, IApproverRoleService approverRoleService, IApprovalStatusService approvalStatusService,
+            IUserService userService)
         {
             _mediator = mediator;
             _approverRoleService = approverRoleService;
             _approverStatusService = approvalStatusService;
+            _userService = userService;
         }
 
-        public async Task<bool> CreateProjectApprovalStepAsync(IncompletedProjectDto incompleted)
+        public async Task<List<ProjectStepResponse>> CreateProjectApprovalStepAsync(List<ResponseApprovalRuleDto> rules, ProjectProposal proposal)
         {
             List<ProjectApprovalStep> newList = [];
-            while (incompleted.StepOrder > 0 )
+
+            List<ProjectStepResponse> responseList = [];
+
+            foreach (ResponseApprovalRuleDto rule in rules)
             {
                 ProjectApprovalStep project = new()
                 {
-                    ProjectProposalId = incompleted.ProjectProposalId,
-                    ProjectProposalObject = incompleted.ProjectProposalObject,
-                    ApproverRoleId = incompleted.ApproverRoleId,
-                    ApproverRoleObject = await _approverRoleService.GetApproverRoleByIdAsync(incompleted.ApproverRoleId),
-                    Status = incompleted.Status,
-                    ApprovalStatusObject = incompleted.ApprovalStatusObject,
-                    StepOrder = incompleted.StepOrder,
+                    ProjectProposalId = proposal.Id,
+                    ProjectProposalObject = proposal,
+                    ApproverRoleId = rule.ApproverRoleId,
+                    ApproverRoleObject = await _approverRoleService.GetApproverRoleByIdAsync(rule.ApproverRoleId),
+                    Status = proposal.Status,
+                    ApprovalStatusObject = proposal.ApprovalStatusObject,
+                    StepOrder = rule.StepOrder,
                 };
-
                 newList.Add(project);
-
-                incompleted.StepOrder--;
-                incompleted.ApproverRoleId--;
             }
 
             CreateProjectApprovalSteps command = new()
-            { 
+            {
                 Steps = newList
             };
 
-            return await _mediator.Send(command);
+            _ = await _mediator.Send(command);
 
+            foreach (ProjectApprovalStep step in newList)
+            {
+                ApproverUserResponse user = new()
+                {
+                    Id = step.UserObject.Id,
+                    Name = step.UserObject.Name,
+                    Email = step.UserObject.Email,
+                    Role = step.UserObject.ApproverRoleObject,
+                };
+
+                ProjectStepResponse response = new()
+                {
+                    Id = step.Id,
+                    StepOrder = step.StepOrder,
+                    DecisionDate = step.DecisionDate,
+                    Observations = step.Observations,
+                    Status = step.ApprovalStatusObject,
+                    ApproverRole = step.ApproverRoleObject,
+                    ApproverUser = user,
+                };
+            }
+            return responseList;
         }
 
-        public async Task<bool> ApproveProjectStepAsync(ProjectApprovalStep project)
+        public async Task<ProposalResponse> DecideStatus(Guid id, DecisionRequest request)
         {
-            bool result = false;
+            if (request.Id == 0 || request.Status == 0 || request.User == 0 || string.IsNullOrWhiteSpace(request.Observation))
+                throw new ExceptionBadRequest("Please, complete all the fields.");
 
-            project.Status = 2;
-            project.ApprovalStatusObject = await _approverStatusService.GetStatusByIdAsync(project.Status);
+            List<ProjectApprovalStep> project = await _mediator.Send(new GetProjectStepsByIdQuery(id));
 
-            bool approved = await _mediator.Send(new UpdateProjectApprovalStep(project));
+            List<ProjectApprovalStep> projectApprovalSteps = [];
 
-            if(approved)
+            List<ProjectStepResponse> response = [];
+
+            if (project.Count == 0)
+                throw new ExceptionNotFound("Project not found, please enter an existing project.");
+
+            foreach (ProjectApprovalStep step in project)
             {
-                result = await _mediator.Send(new VerifyStepsQuery(project.ProjectProposalId));
+                if (!(step.Id == request.Id))
+                {
+                    continue;
+                }
+
+                if(step.Status == 2 || step.Status == 3)
+                    throw new ExceptionConflict("Cannot modify a rejected or approved project.");
+
+                User user = await _userService.GetUserByIdAsync(request.User);
+
+                ApprovalStatus status = await _approverStatusService.GetStatusByIdAsync(request.Status);
+
+                user.ApproverRoleObject = await _approverRoleService.GetApproverRoleByIdAsync(user.Role);
+
+                step.Status = request.Status;
+                step.ApprovalStatusObject = status;
+                step.ApproverUserId = request.User;
+                step.UserObject = user;
+                step.Observations = request.Observation;
+
+                projectApprovalSteps = await _mediator.Send(new UpdateProjectApprovalStep(step));
+
+                foreach (ProjectApprovalStep s in projectApprovalSteps)
+                {
+                    ProjectStepResponse stepResponse = new()
+                    {
+                        Id = s.Id,
+                        StepOrder = s.StepOrder,
+                        ApproverUser = new ApproverUserResponse()
+                        {
+                            Id = s.UserObject.Id,
+                            Name = s.UserObject.Name,
+                            Email = s.UserObject.Email,
+                            Role = s.UserObject.ApproverRoleObject
+                        },
+                        ApproverRole = s.ApproverRoleObject,
+                        DecisionDate = DateTime.Now,
+                        Observations = request.Observation,
+                        Status = s.ApprovalStatusObject,
+                    };
+                    response.Add(stepResponse);
+                }
+
+                if (request.Status == 3)
+                {
+                    //funcion para desaprobar el proyecto
+                }
             }
 
-            if (result)
+            if (response.Count == 0)
+                throw new ExceptionNotFound("Step not found, please enter a valid step.");
+
+            if (projectApprovalSteps == null || projectApprovalSteps.Count == 0)
+                throw new ExceptionNotFound("No project approval steps found.");
+
+            var projectProposal = projectApprovalSteps[0].ProjectProposalObject;
+
+            return new ProposalResponse()
             {
-                project.ProjectProposalObject.Status = 2;
-                project.ProjectProposalObject.ApprovalStatusObject = project.ApprovalStatusObject;
-                approved = await _mediator.Send(new UpdateProjectProposalCommand(project.ProjectProposalObject));
-            }
-
-            return approved;
-        }
-
-        public async Task<bool> RejectProjectStepAsync(ProjectApprovalStep project)
-        {
-            bool result = false;
-
-            project.Status = 3;
-            project.ApprovalStatusObject = await _approverStatusService.GetStatusByIdAsync(project.Status);
-
-            bool rejected = await _mediator.Send(new UpdateProjectApprovalStep(project));
-
-            if (rejected)
-            {
-                project.ProjectProposalObject.Status = 3;
-                project.ProjectProposalObject.ApprovalStatusObject = project.ApprovalStatusObject;
-
-                result = await _mediator.Send(new UpdateProjectProposalCommand(project.ProjectProposalObject));
-            }
-
-            return result;
+                Id = projectApprovalSteps[0].ProjectProposalId,
+                Title = projectProposal.Title,
+                Description = projectProposal.Description,
+                Amount = projectProposal.EstimatedAmount,
+                Duration = projectProposal.EstimatedDuration,
+                Area = projectProposal.AreaObject,
+                Status = projectProposal.ApprovalStatusObject,
+                Type = projectProposal.ProjectTypeObject,
+                User = new UserResponse()
+                {
+                    Id = projectProposal.UserObject.Id,
+                    Name = projectProposal.UserObject.Name,
+                    Email = projectProposal.UserObject.Email,
+                    Role = await _approverRoleService.GetApproverRoleByIdAsync(projectProposal.UserObject.Role)
+                },
+                Steps = response,
+            };
         }
 
         public async Task<List<ProjectProposalResponse>> GetAllProjectsFiltred(ProposalFilterRequest request)
         {
             List<ProjectApprovalStep> list = await _mediator.Send(new GetListApprovalStepsQuery(request));
             List<ProjectProposalResponse> listResponse = [];
+
             if (list == null)
             {
                 return listResponse;
@@ -123,6 +201,42 @@ namespace Application.Services.ProjectApprovalStepService
                 listResponse.Add(response);
             }
             return listResponse;
+        }
+
+        public async Task<List<ProjectStepResponse>> GetProjectStepsById(Guid id)
+        {
+            List<ProjectApprovalStep> list = await _mediator.Send(new GetProjectStepsByIdQuery(id));
+            List<ProjectStepResponse> responseList = [];
+
+            foreach (ProjectApprovalStep step in list)
+            {
+
+                ApproverUserResponse? approver = null;
+
+                if (step.UserObject != null)
+                {
+                    approver = new ApproverUserResponse
+                    {
+                        Id = step.UserObject.Id,
+                        Name = step.UserObject.Name,
+                        Email = step.UserObject.Email,
+                        Role = step.UserObject.ApproverRoleObject
+                    };
+                }
+
+                ProjectStepResponse response = new()
+                {
+                    Id = step.Id,
+                    StepOrder = step.StepOrder,
+                    DecisionDate = step.DecisionDate,
+                    Observations = step.Observations,
+                    ApproverRole = step.ApproverRoleObject,
+                    Status = step.ApprovalStatusObject,
+                    ApproverUser = approver
+                };
+                responseList.Add(response);
+            }
+            return responseList;
         }
     }
 }

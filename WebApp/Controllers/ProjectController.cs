@@ -33,8 +33,8 @@ namespace WebApp.Controllers
                     throw new ExceptionBadRequest("Invalid parameters entered");
                 }
 
-                return Ok(await _projectApprovalStepService.GetAllProjectsFiltred(new ProposalFilterRequest() 
-                { 
+                return Ok(await _projectApprovalStepService.GetAllProjectsFiltred(new ProposalFilterRequest()
+                {
                     Title = title,
                     Applicant = applicant,
                     Status = status,
@@ -53,15 +53,80 @@ namespace WebApp.Controllers
         {
             try
             {
-                await _proposalService.CreateProjectProposalAsync(proposal);
+                var result = await _proposalService.CreateProjectProposalAsync(proposal);
 
-                return Created();
+                //No olvidar crear la url consultando chatgpt
+
+                return Created(string.Empty, result);
             }
-            catch (ExceptionBadRequest ex) 
+            catch (ExceptionBadRequest ex)
             {
                 return BadRequest(ex.Message);
             }
         }
-        
+        [HttpPut("{id}/decision")]
+        [ProducesResponseType(typeof(ProposalResponse), 200)]
+        [ProducesResponseType(typeof(ApiError), 400)]
+        [ProducesResponseType(typeof(ApiError), 404)]
+        [ProducesResponseType(typeof(ApiError), 409)]
+        public async Task<IActionResult> Decide(Guid id, [FromBody] DecisionRequest request)
+        {
+            try
+            {
+                return Ok(await _projectApprovalStepService.DecideStatus(id ,request));
+            }
+            catch (ExceptionBadRequest ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ExceptionNotFound ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (ExceptionConflict ex)
+            {
+                return Conflict(ex.Message);
+            }
+        }
+
+        [HttpPatch("{id}")]
+        [ProducesResponseType(typeof(ProposalResponse), 200)]
+        [ProducesResponseType(typeof(ApiError), 400)]
+        [ProducesResponseType(typeof(ApiError), 404)]
+        [ProducesResponseType(typeof(ApiError), 409)]
+        public async Task<IActionResult> GetProject(Guid id, [FromBody] ProposalUpdateRequest request)
+        {
+            try
+            {
+                return Ok(await _proposalService.UpdateProposalAsync(id,request));
+            }
+            catch (ExceptionBadRequest ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ExceptionNotFound ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (ExceptionConflict ex)
+            {
+                return Conflict(ex.Message);
+            }
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(ProposalResponse), 200)]
+        [ProducesResponseType(typeof(ApiError), 404)]
+        public async Task<IActionResult> GetProject(Guid id)
+        {
+            try
+            {
+                return Ok(await _proposalService.GetProjectById(id));
+            }
+            catch (ExceptionNotFound ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

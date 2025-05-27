@@ -13,35 +13,41 @@ namespace Infrastructure.Persistence.Repositories
         {
             _dbContext = dbContext;
         }
-        public async Task<ResponseApprovalRuleDto> CompareApprovalRuleAsync(CompareDataQuery data)
+        public async Task<List<ResponseApprovalRuleDto>> CompareApprovalRuleAsync(CompareDataQuery data)
         {
             var rules = await _dbContext.ApprovalRule.ToListAsync();
 
-            var bestMatch = rules
-            .Where(rule =>
-                    rule.MinAmount <= data.EstimatedAmount &&
-                    (rule.MaxAmount == 0 || data.EstimatedAmount <= rule.MaxAmount) &&
-                    (rule.Area == null || rule.Area == data.Area) &&
-                    (rule.Type == null || rule.Type == data.Type)
-                )
-                .Select(rule => new
-                {
-                    Rule = rule,
-                    Specificity =
-                        (rule.Area != null ? 1 : 0) +
-                        (rule.Type != null ? 1 : 0) +
-                        (rule.MinAmount > 0 ? 1 : 0) +
-                        (rule.MaxAmount > 0 ? 1 : 0)
-                })
-                .OrderByDescending(x => x.Specificity)
-                .ThenByDescending(x => x.Rule.MaxAmount != 0)
-                .FirstOrDefault();
+            var responseList = new List<ResponseApprovalRuleDto>();
 
-            return new ResponseApprovalRuleDto
+            var stepOrders = rules.Select(r => r.StepOrder).Distinct().OrderBy(s => s).ToList();
+
+            foreach (var stepOrder in stepOrders)
             {
-                ApproverRoleId = bestMatch.Rule.ApproverRoleId,
-                StepOrder = bestMatch.Rule.StepOrder
-            };
+                var matchedRules = rules
+                    .Where(rule => rule.StepOrder == stepOrder)
+                    .Where(rule =>
+                        rule.MinAmount <= data.EstimatedAmount &&
+                        (rule.MaxAmount == 0 || data.EstimatedAmount <= rule.MaxAmount) &&
+                        (rule.Area == null || rule.Area == data.Area) &&
+                        (rule.Type == null || rule.Type == data.Type)
+                    )
+                    .ToList();
+
+                if (!matchedRules.Any())
+                {
+                    break;
+                }
+
+                foreach (var rule in matchedRules)
+                {
+                    responseList.Add(new ResponseApprovalRuleDto
+                    {
+                        StepOrder = rule.StepOrder,
+                        ApproverRoleId = rule.ApproverRoleId,
+                    });
+                }
+            }
+            return responseList;
         }
     }
 }

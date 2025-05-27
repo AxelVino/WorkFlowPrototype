@@ -13,7 +13,7 @@ namespace Application.Services.ApprovalRuleService
             _mediator = mediator;
         }
 
-        public async Task<ResponseApprovalRuleDto> MatchProposalWithRuleAsync(decimal estimatedAmount, int Area, int Type)
+        public async Task<List<ResponseApprovalRuleDto>> MatchProposalWithRuleAsync(decimal estimatedAmount, int Area, int Type)
         {
             return await _mediator.Send(new CompareDataQuery(estimatedAmount, Area, Type));
         }

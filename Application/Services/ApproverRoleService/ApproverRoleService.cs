@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.ApproverRole;
+﻿using Application.Exceptions;
+using Application.Interfaces.ApproverRole;
 using Application.Services.ApproverRoleService.ApproverRoleDtos;
 using Application.Services.ApproverRoleService.ApproverRoleQuerys;
 using Domain.Entities;
@@ -31,7 +32,12 @@ namespace Application.Services.ApproverRoleService
 
         public async Task<ApproverRole> GetApproverRoleByIdAsync(int id)
         {
-            return await _mediator.Send(new GetApproverRoleByIdQuery(id));
+            ApproverRole role =  await _mediator.Send(new GetApproverRoleByIdQuery(id));
+
+            if (role == null)
+                throw new ExceptionNotFound("Role not found, please enter a valid role.");
+
+            return role;
         }
     }
 }

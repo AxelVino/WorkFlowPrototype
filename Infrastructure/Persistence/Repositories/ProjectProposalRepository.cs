@@ -39,16 +39,27 @@ namespace Infrastructure.Persistence.Repositories
             {
                 query = query.Where(a => a.CreateBy == request.Applicant);
             }
-            return await query.ToListAsync ();
+
+            return await query.ToListAsync();
         }
 
-        public async  Task<bool> UpdateProposalAsync(ProjectProposal project)
+        public async Task<ProjectProposal> GetProjectProposalById(Guid id)
         {
-            _dbContext.ProjectProposal.Update(project);
-            await _dbContext.SaveChangesAsync();
-            return true;
+            return await _dbContext.ProjectProposal
+                .Where(p => p.Id == id)
+                .Include(p => p.AreaObject)
+                .Include(p => p.ProjectTypeObject)
+                .Include(p => p.ApprovalStatusObject)
+                .Include(p => p.UserObject)
+                .ThenInclude(p => p.ApproverRoleObject)
+                .FirstOrDefaultAsync();
         }
 
-
+        public async Task<ProjectProposal> UpdateProposalAsync(ProjectProposal request)
+        {
+            _dbContext.ProjectProposal.Update(request);
+            await _dbContext.SaveChangesAsync();
+            return request;
+        }
     }
 }

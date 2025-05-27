@@ -10,6 +10,6 @@ namespace Application.Interfaces.Repository
 {
     public interface IApprovalRuleRepository
     {
-        Task<ResponseApprovalRuleDto> CompareApprovalRuleAsync(CompareDataQuery data);
+        Task<List<ResponseApprovalRuleDto>> CompareApprovalRuleAsync(CompareDataQuery data);
     }
 }

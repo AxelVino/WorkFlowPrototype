@@ -5,8 +5,9 @@ namespace Application.Interfaces.Repository
     public interface IProjectProposalRepository
     {
         Task<List<Domain.Entities.ProjectProposal>> GetAllProposalByUserAsync(int userId);
-        Task<bool> UpdateProposalAsync(Domain.Entities.ProjectProposal proyect);
+        Task<Domain.Entities.ProjectProposal> UpdateProposalAsync(Domain.Entities.ProjectProposal request);
 
         Task<List<Domain.Entities.ProjectProposal>> GetAllProposalProjects(ProposalFilterRequest request);
+        Task<Domain.Entities.ProjectProposal> GetProjectProposalById(Guid id);
     }
 }

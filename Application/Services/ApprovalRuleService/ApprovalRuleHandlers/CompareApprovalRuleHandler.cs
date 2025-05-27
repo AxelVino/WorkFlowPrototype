@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.Services.ApprovalRuleService.ApprovalRuleHandlers
 {
-    public class CompareApprovalRuleHandler : IRequestHandler<CompareDataQuery, ResponseApprovalRuleDto>
+    public class CompareApprovalRuleHandler : IRequestHandler<CompareDataQuery, List<ResponseApprovalRuleDto>>
     {
         private readonly IApprovalRuleRepository _repository;
 
@@ -14,7 +14,7 @@ namespace Application.Services.ApprovalRuleService.ApprovalRuleHandlers
             _repository = userRepository;
         }
 
-        public async Task<ResponseApprovalRuleDto> Handle(CompareDataQuery request, CancellationToken cancellationToken)
+        public async Task<List<ResponseApprovalRuleDto>> Handle(CompareDataQuery request, CancellationToken cancellationToken)
         {
             return await _repository.CompareApprovalRuleAsync(request);
         }

@@ -1,5 +1,4 @@
-﻿using Application.Services.ProposalService;
-using Application.Services.ProposalService.ProposalDtos;
+﻿using Application.Services.ProposalService.ProposalDtos;
 
 
 namespace Application.Interfaces.ProjectProposal
@@ -8,6 +7,7 @@ namespace Application.Interfaces.ProjectProposal
     {
         Task<ProposalResponse> CreateProjectProposalAsync(ProposalRequest command);
         Task<List<Domain.Entities.ProjectProposal>> GetAllProposalByUser(int idUser);
-        Task<bool> UpdateProposalAsync(Domain.Entities.ProjectProposal projectProposal);
+        Task<ProposalResponse> GetProjectById(Guid id);
+        Task<ProposalResponse> UpdateProposalAsync(Guid id ,ProposalUpdateRequest request);
     }
 }

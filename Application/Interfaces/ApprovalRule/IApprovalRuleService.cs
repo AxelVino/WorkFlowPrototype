@@ -4,6 +4,6 @@ namespace Application.Interfaces.ApprovalRule
 {
     public interface IApprovalRuleService
     {
-        Task<ResponseApprovalRuleDto> MatchProposalWithRuleAsync(decimal estimatedAmount, int Area, int Type);
+        Task<List<ResponseApprovalRuleDto>> MatchProposalWithRuleAsync(decimal estimatedAmount, int Area, int Type);
     }
 }

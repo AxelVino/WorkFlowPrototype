@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.ApproverRole;
+﻿using Application.Exceptions;
+using Application.Interfaces.ApproverRole;
 using Application.Interfaces.User;
 using Application.Services.UserService.UserCommands;
 using Application.Services.UserService.UserDtos;
@@ -30,7 +31,11 @@ namespace Application.Services.UserService
 
         public async Task<User?> GetUserByIdAsync(int id)
         {
-            return await _mediator.Send(new GetUserByIdQuery(id));
+            User user = await _mediator.Send(new GetUserByIdQuery(id));
+            if (user == null)
+                throw new ExceptionNotFound("User not found, please enter a valid user.");
+
+            return user;
         }
 
         public Task<bool> UpdateUserAsync(UpdateUserCommand command)

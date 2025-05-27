@@ -14,17 +14,16 @@ namespace Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<bool> AddRangeAsync(List<ProjectApprovalStep> steps)
+        public async Task<List<ProjectApprovalStep>> AddRangeAsync(List<ProjectApprovalStep> steps)
         {
             await _dbContext.AddRangeAsync(steps);
             await _dbContext.SaveChangesAsync();
 
-            return true;
+            return steps;
         }
 
         public async Task<List<ProjectApprovalStep>> GetAllFiltredAsync(ProposalFilterRequest request)
         {
-
             var query = _dbContext.ProjectApprovalStep
                 .Include(a => a.ProjectProposalObject)
                     .ThenInclude(p => p.ApprovalStatusObject)
@@ -51,16 +50,51 @@ namespace Infrastructure.Persistence.Repositories
             if (request.ApprovalUser.HasValue)
             {
                 query = query.Where(a => a.ApproverUserId == request.ApprovalUser);
+                return await query.ToListAsync(); 
             }
-            return await query.ToListAsync();
+
+            var list = await query
+                .GroupBy(a => a.ProjectProposalId)
+                .Select(g => g.OrderBy(x => x.StepOrder).First()) 
+                .ToListAsync();
+
+            return list;
         }
 
-        public async Task<bool> UpdateProject(ProjectApprovalStep project)
+        public async Task<List<ProjectApprovalStep>> GetProjectStepsById(Guid id)
+        {
+            return await _dbContext.ProjectApprovalStep
+                .Where(p => p.ProjectProposalId == id)
+                .Include(p => p.ProjectProposalObject)
+                .Include(p => p.UserObject)
+                    .ThenInclude(p => p.ApproverRoleObject)
+                .Include(p => p.ApproverRoleObject)
+                .Include(p => p.ApprovalStatusObject)
+                .OrderBy(p => p.StepOrder) 
+                .ToListAsync();
+        }
+
+        public async Task<List<ProjectApprovalStep>> UpdateProject(ProjectApprovalStep project)
         {
             _dbContext.ProjectApprovalStep.Update(project);
             await _dbContext.SaveChangesAsync();
 
-            return true;
+            return await _dbContext.ProjectApprovalStep
+                .Where(p => p.ProjectProposalId == project.ProjectProposalId)
+                .Include(p => p.ProjectProposalObject)
+                    .ThenInclude(p => p.AreaObject)
+                .Include(p => p.ProjectProposalObject)
+                    .ThenInclude(p => p.ProjectTypeObject)
+                .Include(p => p.ProjectProposalObject)
+                    .ThenInclude(p => p.ApprovalStatusObject)
+                .Include(p => p.ProjectProposalObject)
+                    .ThenInclude(p => p.UserObject)
+                .Include(p => p.UserObject)
+                    .ThenInclude(p => p.ApproverRoleObject)
+                .Include(p => p.ApproverRoleObject)
+                .Include(p => p.ApprovalStatusObject)
+                .OrderBy(p => p.StepOrder)
+                .ToListAsync();
         }
         public async Task<bool> VerifyStepsSameGuid(Guid projectGuid)
         {

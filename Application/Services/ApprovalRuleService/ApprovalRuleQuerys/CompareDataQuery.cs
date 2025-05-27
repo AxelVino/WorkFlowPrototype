@@ -3,5 +3,5 @@ using MediatR;
 
 namespace Application.Services.ApprovalRuleService.ApprovalRuleQuerys
 {
-    public record CompareDataQuery(decimal EstimatedAmount, int Area, int Type) : IRequest<ResponseApprovalRuleDto>;
+    public record CompareDataQuery(decimal EstimatedAmount, int Area, int Type) : IRequest<List<ResponseApprovalRuleDto>>;
 }
