@@ -60,14 +60,6 @@ namespace Application.Services.ProjectApprovalStepService
 
             foreach (ProjectApprovalStep step in newList)
             {
-                ApproverUserResponse user = new()
-                {
-                    Id = step.UserObject.Id,
-                    Name = step.UserObject.Name,
-                    Email = step.UserObject.Email,
-                    Role = step.UserObject.ApproverRoleObject,
-                };
-
                 ProjectStepResponse response = new()
                 {
                     Id = step.Id,
@@ -76,8 +68,8 @@ namespace Application.Services.ProjectApprovalStepService
                     Observations = step.Observations,
                     Status = step.ApprovalStatusObject,
                     ApproverRole = step.ApproverRoleObject,
-                    ApproverUser = user,
                 };
+                responseList.Add(response);
             }
             return responseList;
         }
