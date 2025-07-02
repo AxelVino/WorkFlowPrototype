@@ -1,14 +1,12 @@
-﻿using Application.Exceptions;
-using Application.Interfaces.ApprovalStatus;
+﻿using Application.Interfaces.ApprovalStatus;
 using Application.Interfaces.ApproverRole;
 using Application.Interfaces.ProjectApprovalStep;
 using Application.Interfaces.User;
+using Application.Responses;
 using Application.Services.ApprovalRuleService.ApprovalRuleDto;
-using Application.Services.ProjectApprovalStepService.ProjectApproalStepDtos;
 using Application.Services.ProjectApprovalStepService.ProjectApprovalStepCommands;
 using Application.Services.ProjectApprovalStepService.ProjectApprovalStepQuerys;
 using Application.Services.ProposalService.ProposalDtos;
-using Application.Services.UserService.UserDtos;
 using Domain.Entities;
 using MediatR;
 
@@ -30,14 +28,15 @@ namespace Application.Services.ProjectApprovalStepService
             _userService = userService;
         }
 
-        public async Task<List<ProjectStepResponse>> CreateProjectApprovalStepAsync(List<ResponseApprovalRuleDto> rules, ProjectProposal proposal)
+        public async Task<List<ApprovalStep>> CreateProjectApprovalStepAsync(List<ResponseApprovalRuleDto> rules, ProjectProposal proposal)
         {
             List<ProjectApprovalStep> newList = [];
 
-            List<ProjectStepResponse> responseList = [];
+            List<ApprovalStep> responseList = [];
 
             foreach (ResponseApprovalRuleDto rule in rules)
             {
+
                 ProjectApprovalStep project = new()
                 {
                     ProjectProposalId = proposal.Id,
@@ -60,114 +59,41 @@ namespace Application.Services.ProjectApprovalStepService
 
             foreach (ProjectApprovalStep step in newList)
             {
-                ProjectStepResponse response = new()
+                ApprovalStep response = new()
                 {
                     Id = step.Id,
                     StepOrder = step.StepOrder,
-                    DecisionDate = step.DecisionDate,
-                    Observations = step.Observations,
-                    Status = step.ApprovalStatusObject,
-                    ApproverRole = step.ApproverRoleObject,
+                    DecisionDate = DateTime.MinValue,
+                    Observations = "",
+                    ApproverUser = new Users 
+                    { 
+                        Id = 0,
+                        Name = "", 
+                        Email = "", 
+                        Role = new GenericResponse() 
+                        { 
+                            Id = 0,
+                            Name = "",
+                        }
+                    
+                    },
+                    ApproverRole = new GenericResponse() 
+                    { 
+                        Id = step.ApproverRoleObject.Id, 
+                        Name = step.ApproverRoleObject.Name 
+                    },
+                    Status = new GenericResponse() 
+                    { 
+                        Id = step.ApprovalStatusObject.Id, 
+                        Name = step.ApprovalStatusObject.Name
+                    },
                 };
+
                 responseList.Add(response);
             }
+
             return responseList;
         }
-
-        public async Task<ProposalResponse> DecideStatus(Guid id, DecisionRequest request)
-        {
-            if (request.Id == 0 || request.Status == 0 || request.User == 0 || string.IsNullOrWhiteSpace(request.Observation))
-                throw new ExceptionBadRequest("Please, complete all the fields.");
-
-            List<ProjectApprovalStep> project = await _mediator.Send(new GetProjectStepsByIdQuery(id));
-
-            List<ProjectApprovalStep> projectApprovalSteps = [];
-
-            List<ProjectStepResponse> response = [];
-
-            if (project.Count == 0)
-                throw new ExceptionNotFound("Project not found, please enter an existing project.");
-
-            foreach (ProjectApprovalStep step in project)
-            {
-                if (!(step.Id == request.Id))
-                {
-                    continue;
-                }
-
-                if(step.Status == 2 || step.Status == 3)
-                    throw new ExceptionConflict("Cannot modify a rejected or approved project.");
-
-                User user = await _userService.GetUserByIdAsync(request.User);
-
-                ApprovalStatus status = await _approverStatusService.GetStatusByIdAsync(request.Status);
-
-                user.ApproverRoleObject = await _approverRoleService.GetApproverRoleByIdAsync(user.Role);
-
-                step.Status = request.Status;
-                step.ApprovalStatusObject = status;
-                step.ApproverUserId = request.User;
-                step.UserObject = user;
-                step.Observations = request.Observation;
-
-                projectApprovalSteps = await _mediator.Send(new UpdateProjectApprovalStep(step));
-
-                foreach (ProjectApprovalStep s in projectApprovalSteps)
-                {
-                    ProjectStepResponse stepResponse = new()
-                    {
-                        Id = s.Id,
-                        StepOrder = s.StepOrder,
-                        ApproverUser = new ApproverUserResponse()
-                        {
-                            Id = s.UserObject.Id,
-                            Name = s.UserObject.Name,
-                            Email = s.UserObject.Email,
-                            Role = s.UserObject.ApproverRoleObject
-                        },
-                        ApproverRole = s.ApproverRoleObject,
-                        DecisionDate = DateTime.Now,
-                        Observations = request.Observation,
-                        Status = s.ApprovalStatusObject,
-                    };
-                    response.Add(stepResponse);
-                }
-
-                if (request.Status == 3)
-                {
-                    //funcion para desaprobar el proyecto
-                }
-            }
-
-            if (response.Count == 0)
-                throw new ExceptionNotFound("Step not found, please enter a valid step.");
-
-            if (projectApprovalSteps == null || projectApprovalSteps.Count == 0)
-                throw new ExceptionNotFound("No project approval steps found.");
-
-            var projectProposal = projectApprovalSteps[0].ProjectProposalObject;
-
-            return new ProposalResponse()
-            {
-                Id = projectApprovalSteps[0].ProjectProposalId,
-                Title = projectProposal.Title,
-                Description = projectProposal.Description,
-                Amount = projectProposal.EstimatedAmount,
-                Duration = projectProposal.EstimatedDuration,
-                Area = projectProposal.AreaObject,
-                Status = projectProposal.ApprovalStatusObject,
-                Type = projectProposal.ProjectTypeObject,
-                User = new UserResponse()
-                {
-                    Id = projectProposal.UserObject.Id,
-                    Name = projectProposal.UserObject.Name,
-                    Email = projectProposal.UserObject.Email,
-                    Role = await _approverRoleService.GetApproverRoleByIdAsync(projectProposal.UserObject.Role)
-                },
-                Steps = response,
-            };
-        }
-
         public async Task<List<ProjectProposalResponse>> GetAllProjectsFiltred(ProposalFilterRequest request)
         {
             List<ProjectApprovalStep> list = await _mediator.Send(new GetListApprovalStepsQuery(request));
@@ -195,40 +121,57 @@ namespace Application.Services.ProjectApprovalStepService
             return listResponse;
         }
 
-        public async Task<List<ProjectStepResponse>> GetProjectStepsById(Guid id)
+        public async Task<List<ApprovalStep>> GetProjectStepsById(Guid id)
         {
             List<ProjectApprovalStep> list = await _mediator.Send(new GetProjectStepsByIdQuery(id));
-            List<ProjectStepResponse> responseList = [];
+            List<ApprovalStep> responseList = [];
 
             foreach (ProjectApprovalStep step in list)
             {
 
-                ApproverUserResponse? approver = null;
+                Users approver = null;
 
                 if (step.UserObject != null)
                 {
-                    approver = new ApproverUserResponse
+                    approver = new Users
                     {
                         Id = step.UserObject.Id,
                         Name = step.UserObject.Name,
                         Email = step.UserObject.Email,
-                        Role = step.UserObject.ApproverRoleObject
+                        Role = new GenericResponse() 
+                        { 
+                            Id = step.UserObject.ApproverRoleObject!.Id,
+                            Name = step.UserObject.ApproverRoleObject.Name,
+                        },
                     };
                 }
 
-                ProjectStepResponse response = new()
+                ApprovalStep response = new()
                 {
                     Id = step.Id,
                     StepOrder = step.StepOrder,
                     DecisionDate = step.DecisionDate,
                     Observations = step.Observations,
-                    ApproverRole = step.ApproverRoleObject,
-                    Status = step.ApprovalStatusObject,
-                    ApproverUser = approver
+                    ApproverRole = new GenericResponse() 
+                    { 
+                        Id = step.ApproverRoleObject.Id, 
+                        Name = step.ApproverRoleObject.Name
+                    },
+                    Status = new GenericResponse() 
+                    { 
+                        Id = step.ApprovalStatusObject.Id,
+                        Name = step.ApprovalStatusObject.Name,
+                    },
+                    ApproverUser = approver!
                 };
                 responseList.Add(response);
             }
             return responseList;
+        }
+
+        public async Task<List<ProjectApprovalStep>> GetStepById(Guid id)
+        {
+            return await _mediator.Send(new GetProjectStepsByIdQuery(id));
         }
     }
 }

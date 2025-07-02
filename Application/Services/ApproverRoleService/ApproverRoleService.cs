@@ -1,6 +1,6 @@
 ﻿using Application.Exceptions;
 using Application.Interfaces.ApproverRole;
-using Application.Services.ApproverRoleService.ApproverRoleDtos;
+using Application.Responses;
 using Application.Services.ApproverRoleService.ApproverRoleQuerys;
 using Domain.Entities;
 using MediatR;
@@ -14,13 +14,13 @@ namespace Application.Services.ApproverRoleService
             _mediator = mediator;
         }
 
-        public async Task<List<ApproverRoleResponse>> GetAllApproverRoles()
+        public async Task<List<GenericResponse>> GetAllApproverRoles()
         {
             List<ApproverRole> list = await _mediator.Send(new GetAllApproverRoleQuery());
-            List<ApproverRoleResponse> listResponse = [];
+            List<GenericResponse> listResponse = [];
             foreach (ApproverRole role in list)
             {
-                ApproverRoleResponse response = new() 
+                GenericResponse response = new() 
                 { 
                     Id = role.Id, 
                     Name = role.Name 

@@ -43,6 +43,13 @@ namespace Infrastructure.Persistence.Repositories
             return await query.ToListAsync();
         }
 
+        public Task<List<string>> GetAllTitles()
+        {
+            return _dbContext.ProjectProposal
+                .Select(p => p.Title)
+                .ToListAsync();
+        }
+
         public async Task<ProjectProposal> GetProjectProposalById(Guid id)
         {
             return await _dbContext.ProjectProposal

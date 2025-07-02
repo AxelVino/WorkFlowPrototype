@@ -1,8 +1,8 @@
 ﻿using Application.Exceptions;
 using Application.Interfaces.ApproverRole;
 using Application.Interfaces.User;
+using Application.Responses;
 using Application.Services.UserService.UserCommands;
-using Application.Services.UserService.UserDtos;
 using Application.Services.UserService.UserQuerys;
 using Domain.Entities;
 using MediatR;
@@ -43,18 +43,19 @@ namespace Application.Services.UserService
             throw new NotImplementedException();
         }
 
-        public async Task<List<UserResponse>> GetAllUsersAsync()
+        public async Task<List<Users>> GetAllUsersAsync()
         {
             List<User> list = await _mediator.Send(new GetAllUsersQuery());
-            List<UserResponse> listResponse = [];
+            List<Users> listResponse = [];
             foreach (User user in list)
             {
-                UserResponse response = new() 
+                ApproverRole element = await _approverRoleService.GetApproverRoleByIdAsync(user.Role);
+                Users response = new() 
                 { 
                     Id = user.Id,
                     Name = user.Name,
                     Email = user.Email,
-                    Role = await _approverRoleService.GetApproverRoleByIdAsync(user.Role),
+                    Role = new GenericResponse() { Id = element.Id, Name= element.Name },
                 };
                 listResponse.Add(response);
             }

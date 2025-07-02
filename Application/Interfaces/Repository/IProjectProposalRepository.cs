@@ -9,5 +9,6 @@ namespace Application.Interfaces.Repository
 
         Task<List<Domain.Entities.ProjectProposal>> GetAllProposalProjects(ProposalFilterRequest request);
         Task<Domain.Entities.ProjectProposal> GetProjectProposalById(Guid id);
+        Task<List<string>> GetAllTitles();
     }
 }

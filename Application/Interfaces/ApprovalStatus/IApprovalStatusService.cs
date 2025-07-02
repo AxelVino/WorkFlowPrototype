@@ -1,10 +1,10 @@
-﻿using Application.Services.ApprovalStatusService.StatusDtos;
+﻿using Application.Responses;
 
 namespace Application.Interfaces.ApprovalStatus
 {
     public interface IApprovalStatusService
     {
         Task<Domain.Entities.ApprovalStatus> GetStatusByIdAsync(int id);
-        Task<List<ApprovalStatusResponse>> GetAllApprovalStatus();
+        Task<List<GenericResponse>> GetAllApprovalStatus();
     }
 }

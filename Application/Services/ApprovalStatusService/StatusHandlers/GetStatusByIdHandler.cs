@@ -1,6 +1,6 @@
-﻿using Application.Interfaces.Repository;
+﻿using Application.Exceptions;
+using Application.Interfaces.Repository;
 using Application.Services.ApprovalStatusService.StatusQuerys;
-using Application.Services.AreaService.AreaQuerys;
 using MediatR;
 
 namespace Application.Services.ApprovalStatusService.StatusHandlers
@@ -17,7 +17,7 @@ namespace Application.Services.ApprovalStatusService.StatusHandlers
         public async Task<Domain.Entities.ApprovalStatus> Handle(GetStatusByIdQuery request, CancellationToken cancellationToken)
         {
             var status = await _repository.GetByIdAsync(request.Id);
-            return status is null ? throw new Exception($"The status with ID({request.Id}) was not found.") : status;
+            return status is null ? throw new ExceptionBadRequest($"The status with ID({request.Id}) was not found.") : status;
         }
     }
 }

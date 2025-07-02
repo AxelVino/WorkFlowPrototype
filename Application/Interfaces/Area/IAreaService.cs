@@ -1,10 +1,9 @@
-﻿using Application.Services.AreaService.AreaDtos;
-
+﻿using Application.Responses;
 namespace Application.Interfaces.Area
 {
     public interface IAreaService
     {
         Task<Domain.Entities.Area> GetAreaByIdAsync(int id);
-        Task<List<AreaResponse>> GetAllAreasAsync();
+        Task<List<GenericResponse>> GetAllAreasAsync();
     }
 }

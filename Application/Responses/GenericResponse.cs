@@ -1,6 +1,7 @@
-﻿namespace Application.Services.ProjectTypeService.ProjectTypeDtos
+﻿
+namespace Application.Responses
 {
-    public class ProjectTypeResponse
+    public class GenericResponse
     {
         public required int Id { get; set; }
         public required string Name { get; set; }

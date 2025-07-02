@@ -1,5 +1,5 @@
 ﻿using Application.Interfaces.ProjectType;
-using Application.Services.ProjectTypeService.ProjectTypeDtos;
+using Application.Responses;
 using Application.Services.ProjectTypeService.ProjectTypeQuerys;
 using Domain.Entities;
 using MediatR;
@@ -14,13 +14,13 @@ namespace Application.Services.ProjectTypeService
             _mediator = mediator;
         }
 
-        public async Task<List<ProjectTypeResponse>> GetAllProjectTypes()
+        public async Task<List<GenericResponse>> GetAllProjectTypes()
         {
             List<ProjectType> list = await _mediator.Send(new GetAllProjectTypesQuery());
-            List <ProjectTypeResponse> listResponse = [];
+            List <GenericResponse> listResponse = [];
             foreach (ProjectType projectType in list)
             {
-                ProjectTypeResponse response = new() 
+                GenericResponse response = new() 
                 {
                     Id = projectType.Id, 
                     Name = projectType.Name 

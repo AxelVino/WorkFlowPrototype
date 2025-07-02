@@ -21,16 +21,16 @@ namespace Application.Services.ProposalService.ProposalHandlers
                 Title = request.Title,
                 Description = request.Description,
                 Area = request.Area,
-                AreaObject = request.AreaObject,
+                AreaObject = request.AreaObject!,
                 Type = request.Type,
-                ProjectTypeObject = request.ProjectTypeObject,
+                ProjectTypeObject = request.ProjectTypeObject!,
                 EstimatedAmount = request.EstimatedAmount,
                 EstimatedDuration = request.EstimatedDuration, 
                 Status = request.Status,
-                ApprovalStatusObject = request.ApprovalStatusObject,
+                ApprovalStatusObject = request.ApprovalStatusObject!,
                 CreateAt = request.CreateAt,
                 CreateBy = request.CreateBy,
-                UserObject = request.UserObject, 
+                UserObject = request.UserObject!, 
             };
 
             await _repository.AddAsync(projectProposal);

@@ -3,6 +3,8 @@ using Application.Interfaces.ProjectProposal;
 using Application.Services.ProposalService.ProposalDtos;
 using Application.Exceptions;
 using Application.Interfaces.ProjectApprovalStep;
+using Application.Request;
+using Application.Responses;
 
 namespace WebApp.Controllers
 {
@@ -47,16 +49,13 @@ namespace WebApp.Controllers
             }
         }
         [HttpPost]
-        [ProducesResponseType(typeof(ProposalResponse), 201)]
+        [ProducesResponseType(typeof(Project), 201)]
         [ProducesResponseType(typeof(ApiError), 400)]
-        public async Task<IActionResult> CreateProject(ProposalRequest proposal)
+        public async Task<IActionResult> CreateProject(ProjectCreate proposal)
         {
             try
             {
                 var result = await _proposalService.CreateProjectProposalAsync(proposal);
-
-                //No olvidar crear la url consultando chatgpt
-
                 return Created(string.Empty, result);
             }
             catch (ExceptionBadRequest ex)
@@ -64,8 +63,8 @@ namespace WebApp.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPut("{id}/decision")]
-        [ProducesResponseType(typeof(ProposalResponse), 200)]
+        [HttpPatch("{id}/decision")]
+        [ProducesResponseType(typeof(Project), 200)]
         [ProducesResponseType(typeof(ApiError), 400)]
         [ProducesResponseType(typeof(ApiError), 404)]
         [ProducesResponseType(typeof(ApiError), 409)]
@@ -73,7 +72,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                return Ok(await _projectApprovalStepService.DecideStatus(id ,request));
+                return Ok(await _proposalService.EvaluateProject(id ,request));
             }
             catch (ExceptionBadRequest ex)
             {
@@ -90,7 +89,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPatch("{id}")]
-        [ProducesResponseType(typeof(ProposalResponse), 200)]
+        [ProducesResponseType(typeof(Project), 200)]
         [ProducesResponseType(typeof(ApiError), 400)]
         [ProducesResponseType(typeof(ApiError), 404)]
         [ProducesResponseType(typeof(ApiError), 409)]
@@ -115,7 +114,7 @@ namespace WebApp.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(ProposalResponse), 200)]
+        [ProducesResponseType(typeof(Project), 200)]
         [ProducesResponseType(typeof(ApiError), 404)]
         public async Task<IActionResult> GetProject(Guid id)
         {

@@ -1,6 +1,6 @@
 ﻿using Application.Exceptions;
 using Application.Interfaces.ApprovalStatus;
-using Application.Services.ApprovalStatusService.StatusDtos;
+using Application.Responses;
 using Application.Services.ApprovalStatusService.StatusQuerys;
 using Domain.Entities;
 using MediatR;
@@ -18,13 +18,13 @@ namespace Application.Services.ApprovalStatusService
 
         }
 
-        public async Task<List<ApprovalStatusResponse>> GetAllApprovalStatus()
+        public async Task<List<GenericResponse>> GetAllApprovalStatus()
         {
             List<ApprovalStatus> list = await _mediator.Send(new GetAllApprovalStatusQuery());
-            List<ApprovalStatusResponse> listResponse = [];
+            List<GenericResponse> listResponse = [];
             foreach (ApprovalStatus status in list)
             {
-                ApprovalStatusResponse response = new() 
+                GenericResponse response = new() 
                 { 
                     Id = status.Id,
                     Name=status.Name 

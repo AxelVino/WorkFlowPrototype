@@ -3,11 +3,7 @@ using Application.Interfaces.ApproverRole;
 using Application.Interfaces.Area;
 using Application.Interfaces.ProjectType;
 using Application.Interfaces.User;
-using Application.Services.ApprovalStatusService.StatusDtos;
-using Application.Services.ApproverRoleService.ApproverRoleDtos;
-using Application.Services.AreaService.AreaDtos;
-using Application.Services.ProjectTypeService.ProjectTypeDtos;
-using Application.Services.UserService.UserDtos;
+using Application.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers
@@ -34,31 +30,31 @@ namespace WebApp.Controllers
             _areaService = areaService;
         }
         [HttpGet("Area")]
-        [ProducesResponseType(typeof(List<AreaResponse>), 200)]
+        [ProducesResponseType(typeof(List<GenericResponse>), 200)]
         public async Task<IActionResult> GetAreas()
         {
             return Ok(await _areaService.GetAllAreasAsync());
         }
-        [HttpGet("ProyectType")]
-        [ProducesResponseType(typeof(List<ProjectTypeResponse>), 200)]
+        [HttpGet("ProjectType")]
+        [ProducesResponseType(typeof(List<GenericResponse>), 200)]
         public async Task<IActionResult> GetProyectTypes()
         {
             return Ok(await _projectTypeService.GetAllProjectTypes());
         }
         [HttpGet("Role")]
-        [ProducesResponseType(typeof(List<ApproverRoleResponse>), 200)]
+        [ProducesResponseType(typeof(List<GenericResponse>), 200)]
         public async Task<IActionResult> GetRoles()
         {
             return Ok(await _approverRoleService.GetAllApproverRoles());
         }
         [HttpGet("ApprovalStatus")]
-        [ProducesResponseType(typeof(List<ApprovalStatusResponse>), 200)]
+        [ProducesResponseType(typeof(List<GenericResponse>), 200)]
         public async Task<IActionResult> GetApprovalStatuses()
         {
             return Ok(await _approvalStatusService.GetAllApprovalStatus());
         }
         [HttpGet("User")]
-        [ProducesResponseType(typeof(List<UserResponse>), 200)]
+        [ProducesResponseType(typeof(List<Users>), 200)]
         public async Task<IActionResult> GetUsers()
         {
             return Ok(await _userService.GetAllUsersAsync());
