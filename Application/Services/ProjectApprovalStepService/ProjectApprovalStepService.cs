@@ -96,6 +96,7 @@ namespace Application.Services.ProjectApprovalStepService
         }
         public async Task<List<ProjectProposalResponse>> GetAllProjectsFiltred(ProposalFilterRequest request)
         {
+
             List<ProjectApprovalStep> list = await _mediator.Send(new GetListApprovalStepsQuery(request));
             List<ProjectProposalResponse> listResponse = [];
 

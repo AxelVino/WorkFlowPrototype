@@ -45,20 +45,40 @@ namespace Infrastructure.Persistence.Repositories
             }
             if (request.Applicant.HasValue)
             {
-                query = query.Where(a => a.ProjectProposalObject.UserObject.Id == request.Applicant);
+                if (request.ApprovalUser.HasValue)
+                {
+                    // Approval Mode: Exclude projects created by the approver (to avoid self-approval)
+                    query = query.Where(a => a.ProjectProposalObject.UserObject.Id != request.Applicant);
+                }
+                else
+                {
+                    // Standard Mode: Filter by specific applicant
+                    query = query.Where(a => a.ProjectProposalObject.UserObject.Id == request.Applicant);
+                }
             }
+
+            var steps = await query.ToListAsync();
+
+            var activeSteps = steps
+                .GroupBy(s => s.ProjectProposalId)
+                .Select(g =>
+                {
+                    var active = g.OrderBy(s => s.StepOrder).FirstOrDefault(s => s.Status != 2 && s.Status != 3);
+                    if (active != null) return active;
+
+                    return g.OrderByDescending(s => s.StepOrder).First();
+                })
+                .ToList();
+
             if (request.ApprovalUser.HasValue)
             {
-                query = query.Where(a => a.ApproverUserId == request.ApprovalUser);
-                return await query.ToListAsync(); 
+                activeSteps = activeSteps
+                    .Where(s => s.Status != 2 && s.Status != 3) 
+                    .Where(s => s.ApproverRoleId == request.ApprovalUser)
+                    .ToList();
             }
 
-            var list = await query
-                .GroupBy(a => a.ProjectProposalId)
-                .Select(g => g.OrderBy(x => x.StepOrder).First()) 
-                .ToListAsync();
-
-            return list;
+            return activeSteps!;
         }
 
         public async Task<List<ProjectApprovalStep>> GetProjectStepsById(Guid id)

@@ -33,21 +33,31 @@ namespace Infrastructure.Persistence.Repositories
                     )
                     .ToList();
 
-                if (!matchedRules.Any())
-                {
-                    break;
-                }
 
-                foreach (var rule in matchedRules)
+                var bestMatch = matchedRules
+                    .OrderByDescending(r => (r.Area.HasValue ? 1 : 0) + (r.Type.HasValue ? 1 : 0))
+                    .ThenBy(r => r.MaxAmount == 0 ? decimal.MaxValue : r.MaxAmount)
+                    .ThenByDescending(r => r.MinAmount)
+                    .FirstOrDefault();
+
+                if (bestMatch != null)
                 {
                     responseList.Add(new ResponseApprovalRuleDto
                     {
-                        StepOrder = rule.StepOrder,
-                        ApproverRoleId = rule.ApproverRoleId,
+                        StepOrder = bestMatch.StepOrder,
+                        ApproverRoleId = bestMatch.ApproverRoleId,
                     });
                 }
             }
-            return responseList;
+
+            // Deduplicate by ApproverRoleId, keeping the one with the lowest StepOrder (earliest approval)
+            var uniqueRoleList = responseList
+                .GroupBy(r => r.ApproverRoleId)
+                .Select(g => g.OrderBy(r => r.StepOrder).First())
+                .OrderBy(r => r.StepOrder)
+                .ToList();
+
+            return uniqueRoleList;
         }
     }
 }
